@@ -1,0 +1,92 @@
+Implement function to traverse the graph using Breadth First Search (BFS) traversal
+
+#include<stdio.h>
+struct queue
+{
+int front,rear;
+int Q[20];
+};
+typedef struct queue QUEUE;
+int nov,a[20][20];
+int visited[20];
+void initqueue(QUEUE *q)
+{
+int i;
+for(i=0;i<20;i++)
+q->Q[i]=0;
+q->rear=-1;
+q->front=-1;
+printf("\nQueue created");
+}v
+oid add(QUEUE *q,int data)
+{
+q->Q[++q->rear]=data;
+}i
+nt delet(QUEUE *q)
+{
+return(q->Q[++q->front]);
+}i
+nt isempty(QUEUE *q)
+{
+if (q->rear==q->front)
+return 1;
+else
+return 0;
+}v
+oid bfs(int a[20][20],int nov)
+{
+int ver,j;
+QUEUE q;
+initqueue(&q);
+printf("\n \t BFS seq. :\n ");
+ver=1;
+add(&q,ver);
+visited[ver]=1;
+while(!isempty(&q))
+{
+ver=delet(&q);
+for(j=1;j<=nov;j++)
+{
+if(a[ver][j]==1 && visited[j]==0)
+{
+add(&q,j);
+visited[j]=1;
+}
+}p
+rintf("\t V%d ",ver);
+}
+}
+void creatematrix()
+{
+int i,j;
+printf("\nEnter no. of vertices: ");
+scanf("%d",&nov);
+//accept the matrix
+for(i=1;i<=nov;i++)
+{
+for(j=1;j<=nov;j++)
+{
+printf("\nIs there edge between V[%d] and V[%d]: ",i,j);
+scanf("%d",&a[i][j]);
+}
+}
+}v
+oid display(int a[20][20]) //print the matrix
+{
+int i,j;
+for(i=1;i<=nov;i++)
+{
+for(j=1;j<=nov;j++)
+printf("\t%d",a[i][j]);
+printf("\n");
+}
+}m
+ain()
+{
+int ch,i;
+creatematrix();
+printf("\n\t***Adjacency Matrix****\n");
+display(a);
+printf("\nThe Breadth First search Traversal(BFS) is:");
+bfs(a,nov);
+}
