@@ -1,0 +1,41 @@
+Write a C program that accepts the vertices and edges of a graph and stores it as an adjacency
+matrix. Display the adjacency matrix.
+
+
+#include<stdio.h>
+int v,a[20][20];
+void creatematrix()
+{
+int i,j;
+printf("\nEnter no. of vertices: ");
+scanf("%d",&v);
+//accept the matrix
+for(i=1;i<=v;i++)
+{
+for(j=1;j<=v;j++)
+{
+printf("\nIs there edge between V[%d] and V[%d]: ",i,j);
+scanf("%d",&a[i][j]);
+}
+}
+}v
+oid display(int a[20][20]) //print the matrix
+{
+int i,j;
+for(i=1;i<=v;i++)
+{
+for(j=1;j<=v;j++)
+printf("\t%d",a[i][j]);
+printf("\n");
+}
+}
+main()
+{
+int ch;
+creatematrix();
+printf("\n\t***Adjacency Matrix****\n");
+display(a);
+}/
+*
+[root@localhost ass3]# cc setaq1.c
+[root@localhost ass3]# ./a.out
